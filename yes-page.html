@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Я знала! ❤️</title>
+    <link rel="stylesheet" href="style-yes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Контейнер для салюта -->
+    <div id="fireworks-container"></div>
+    
+    <!-- Основной контент -->
+    <div class="celebration-container">
+        <div class="message-box">
+            <h1 class="celebration-text">Я ЗНАЛА ЧТО ТЫ МЕНЯ ОЧЕНЬ ЛЮБИШЬ!</h1>
+            <div class="hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        
+        <div class="photo-celebration">
+            <div class="photo-frame-celebration">
+                <img src="assets/kiss.jpg" alt="Наше фото" class="photo-celebration-img">
+                <div class="photo-glow"></div>
+            </div>
+        </div>
+        
+        <div class="love-message">
+            <p class="sub-text">Ты сделал меня самой счастливой! ❤️</p>
+            <button id="back-button" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Вернуться назад
+            </button>
+        </div>
+    </div>
+    
+    <!-- Контейнер для падающих сердечек -->
+    <div id="falling-hearts"></div>
+    
+    <!-- Аудио для салюта (опционально) -->
+    <audio id="firework-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-fireworks-show-audio-3060.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="script-yes.js"></script>
+</body>
+</html>

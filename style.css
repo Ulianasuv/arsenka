@@ -1,0 +1,695 @@
+/* Сброс и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    max-width: 900px;
+    padding: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Секция с фотографией */
+.photo-section {
+    margin-bottom: 40px;
+}
+
+.photo-frame {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 10px solid white;
+    transform: rotate(-3deg);
+    transition: transform 0.5s ease;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,105,180,0.2), rgba(255,20,147,0.2));
+    mix-blend-mode: overlay;
+}
+
+/* Секция с вопросом */
+.question-section {
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.question {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #ff4081;
+    text-shadow: 3px 3px 0px rgba(255, 64, 129, 0.2);
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.heart-decoration {
+    font-size: 2rem;
+    color: #ff4081;
+    opacity: 0.7;
+}
+
+.heart-decoration i {
+    margin: 0 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.heart-decoration i:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.heart-decoration i:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Секция с кнопками */
+.buttons-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.answer-btn {
+    padding: 20px 50px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-width: 180px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Кнопка ДА */
+.yes-btn {
+    background: linear-gradient(45deg, #ff4081, #ff80ab);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.yes-btn .btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.yes-btn:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(255, 64, 129, 0.3);
+}
+
+.sparkle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    color: gold;
+    font-size: 1rem;
+    opacity: 0;
+}
+
+/* Анимация сверкания */
+@keyframes sparkle {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Кнопка НЕТ */
+.no-btn {
+    background: linear-gradient(45deg, #2196F3, #21CBF3);
+    color: white;
+    transition: all 0.3s ease;
+    position: absolute;
+    /* Убираем начальные координаты из CSS */
+    z-index: 100;
+    box-shadow: 0 10px 20px rgba(33, 150, 243, 0.3);
+    border: 2px solid white;
+}
+
+.no-btn:hover {
+    background: linear-gradient(45deg, #1976D2, #00BCD4);
+}
+
+/* Летающие сердечки */
+.flying-heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff4081;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(360deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Подсказка */
+.hint {
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.7; }
+}
+
+/* Адаптивность */
+
+@media (min-width: 769px) {
+    .no-btn {
+        /* Начальная позиция будет установлена через JS */
+        transform: rotate(0deg);
+    }
+}
+
+
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .photo-frame {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .question {
+        font-size: 3rem;
+    }
+    
+    .buttons-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        min-height: 200px;
+    }
+    
+    .answer-btn {
+        padding: 15px 40px;
+        font-size: 1.5rem;
+        min-width: 160px;
+    }
+    
+    .no-btn {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .question {
+        font-size: 2.5rem;
+    }
+    
+    .photo-frame {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+
+
+/* Гарантируем, что кнопка "Нет" всегда видна */
+.no-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Контейнер для кнопок должен иметь границы */
+.buttons-section {
+    position: relative;
+    min-height: 150px;
+    margin: 40px 0;
+}
+
+/* Дебаг стили - можно убрать потом */
+.debug-border {
+    border: 2px dashed red !important;
+}
+
+
+/* ===== СТИЛИ ДЛЯ КОТИКОВ ===== */
+
+.cats-container {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.cat {
+    position: absolute;
+    width: 80px;
+    height: 70px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1;
+}
+
+/* Левая кошка */
+.cat-left {
+    bottom: -20px;
+    left: -2px;
+    transform: translateY(100%) rotate(-10deg);
+}
+
+/* Правая кошка */
+.cat-right {
+    bottom: -20px;
+    right: -50px;
+    transform: translateY(100%) rotate(10deg);
+}
+
+/* Показываем кошек при наведении на кнопку Да */
+.yes-btn:hover ~ .container .cat-left,
+.container:hover .cat-left {
+    opacity: 1;
+    transform: translateY(0) rotate(-10deg);
+    transition-delay: 0.2s;
+}
+
+.yes-btn:hover ~ .container .cat-right,
+.container:hover .cat-right {
+    opacity: 1;
+    transform: translateY(0) rotate(10deg);
+    transition-delay: 0.4s;
+}
+
+/* Тело кошки */
+.cat::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 50px;
+    background: linear-gradient(45deg, #ffd3ff, #ff98ff);
+    border-radius: 40px 40px 0 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Уши кошки */
+.cat-ear {
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    background: rgb(255, 214, 246);
+    top: -15px;
+    border-radius: 50% 50% 0 0;
+    z-index: 2;
+}
+
+.cat-ear-left {
+    left: 15px;
+    transform: rotate(-15deg);
+}
+
+.cat-ear-right {
+    right: 15px;
+    transform: rotate(15deg);
+}
+
+.cat-ear::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 15px;
+    background: #ffa0eb;
+    border-radius: 50% 50% 0 0;
+    top: 5px;
+    left: 4px;
+}
+
+/* Лицо кошки */
+.cat-face {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background: rgb(255, 229, 251);
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+}
+
+/* Глаза кошки */
+.cat-eye {
+    position: absolute;
+    width: 12px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    top: 12px;
+    overflow: hidden;
+}
+
+.cat-eye-left {
+    left: 10px;
+}
+
+.cat-eye-right {
+    right: 10px;
+}
+
+.cat-eye::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #5D4037;
+    border-radius: 50%;
+    top: 5px;
+    left: 3px;
+    animation: catBlink 3s infinite;
+}
+
+@keyframes catBlink {
+    0%, 45%, 55%, 100% { height: 6px; }
+    48%, 52% { height: 2px; }
+}
+
+/* Носик */
+.cat-nose {
+    position: absolute;
+    width: 8px;
+    height: 6px;
+    background: #FF7043;
+    border-radius: 50%;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+/* Ротик */
+.cat-mouth {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    border-bottom: 3px solid #5D4037;
+    border-radius: 0 0 50% 50%;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Усики */
+.cat-whisker {
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background: #5D4037;
+    top: 22px;
+}
+
+.cat-whisker-left-1 {
+    left: -15px;
+    transform: rotate(15deg);
+}
+
+.cat-whisker-left-2 {
+    left: -15px;
+    top: 26px;
+    transform: rotate(-15deg);
+}
+
+.cat-whisker-right-1 {
+    right: -15px;
+    transform: rotate(-15deg);
+}
+
+.cat-whisker-right-2 {
+    right: -15px;
+    top: 26px;
+    transform: rotate(15deg);
+}
+
+/* Анимация подпрыгивания */
+@keyframes catBounce {
+    0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
+    50% { transform: translateY(-10px) rotate(var(--rotate)); }
+}
+
+.yes-btn:hover ~ .container .cat-left,
+.container:hover .cat-left {
+    animation: catBounce 1s ease-in-out infinite;
+    --rotate: -10deg;
+}
+
+.yes-btn:hover ~ .container .cat-right,
+.container:hover .cat-right {
+    animation: catBounce 1s ease-in-out infinite 0.2s;
+    --rotate: 10deg;
+}
+
+/* Сердечки над кошками */
+.cat::after {
+    content: '❤️';
+    position: absolute;
+    font-size: 20px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.yes-btn:hover ~ .container .cat-left::after,
+.container:hover .cat-left::after {
+    opacity: 1;
+    animation: floatUp 1.5s ease-in-out infinite;
+}
+
+.yes-btn:hover ~ .container .cat-right::after,
+.container:hover .cat-right::after {
+    opacity: 1;
+    animation: floatUp 1.5s ease-in-out infinite 0.3s;
+}
+
+@keyframes floatUp {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
+    50% { transform: translateX(-50%) translateY(-10px); opacity: 1; }
+}
+
+/* Адаптивность для котиков */
+@media (max-width: 768px) {
+    .cat {
+        width: 60px;
+        height: 50px;
+    }
+    
+    .cat::before {
+        width: 60px;
+        height: 35px;
+    }
+    
+    .cat-left {
+        left: -25px;
+        bottom: -15px;
+    }
+    
+    .cat-right {
+        right: -25px;
+        bottom: -15px;
+    }
+    
+    .cat-face {
+        width: 45px;
+        height: 30px;
+        top: 7px;
+        left: 7px;
+    }
+    
+    .cat-eye {
+        width: 8px;
+        height: 10px;
+        top: 8px;
+    }
+    
+    .cat-eye::before {
+        width: 4px;
+        height: 4px;
+        top: 3px;
+        left: 2px;
+    }
+    
+    .cat-whisker {
+        width: 15px;
+        top: 16px;
+    }
+    
+    .cat-whisker-left-1,
+    .cat-whisker-left-2 {
+        left: -10px;
+    }
+    
+    .cat-whisker-right-1,
+    .cat-whisker-right-2 {
+        right: -10px;
+    }
+    
+    .cat::after {
+        font-size: 16px;
+        top: -25px;
+    }
+}
+
+/* Стили для реальных изображений котиков */
+.cat.real-cat {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.cat-left.real-cat {
+    bottom: -30px;
+    left: -50px;
+}
+
+.cat-right.real-cat {
+    bottom: -30px;
+    right: -50px;
+}
+
+/* Анимация для реальных котиков */
+@keyframes realCatBounce {
+    0%, 100% { transform: translateY(0) rotate(var(--rotate)) scale(1); }
+    50% { transform: translateY(-15px) rotate(var(--rotate)) scale(1.05); }
+}
+
+.yes-btn:hover ~ .container .cat-left.real-cat,
+.container:hover .cat-left.real-cat {
+    animation: realCatBounce 0.8s ease-in-out infinite;
+    --rotate: -5deg;
+}
+
+.yes-btn:hover ~ .container .cat-right.real-cat,
+.container:hover .cat-right.real-cat {
+    animation: realCatBounce 0.8s ease-in-out infinite 0.2s;
+    --rotate: 5deg;
+}
+
+
+.flying-heart {
+    position: fixed;
+    font-size: 1.5em;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    animation-timing-function: ease-out;
+}
+
+@keyframes fly {
+    0% {
+        opacity: 0.8;
+        transform: translate(0, 0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(var(--tx), var(--ty)) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.8);
+    }
+}
+
+/* Дополнительные стили для кнопки-сердечка */
+#love-button:hover {
+    background: rgba(255, 20, 147, 1);
+    transform: scale(1.2) !important;
+}
+
+#love-button:active {
+    transform: scale(0.9) !important;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ты меня любишь?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Фотография -->
+        <div class="photo-section">
+            <div class="photo-frame">
+                <img src="assets/we.jpg" alt="Фотография" class="photo" id="main-photo">
+                <div class="photo-overlay"></div>
+                
+                <!-- <div class="cats-container">
+                    <img src="assets/belka.webp" alt="слева" class="cat cat-left real-cat">
+                    <img src="assets/rabbit.webp" alt="справа" class="cat cat-right real-cat">
+                </div> -->
+                <!-- Кошки для анимации -->
+<div class="cats-container">
+    <!-- Левая кошка -->
+    <div class="cat cat-left">
+        <div class="cat-ear cat-ear-left"></div>
+        <div class="cat-ear cat-ear-right"></div>
+        <div class="cat-face">
+            <div class="cat-eye cat-eye-left"></div>
+            <div class="cat-eye cat-eye-right"></div>
+            <div class="cat-nose"></div>
+            <div class="cat-mouth"></div>
+            <div class="cat-whisker cat-whisker-left-1"></div>
+            <div class="cat-whisker cat-whisker-left-2"></div>
+            <div class="cat-whisker cat-whisker-right-1"></div>
+            <div class="cat-whisker cat-whisker-right-2"></div>
+        </div>
+    </div>
+    
+    <!-- Правая кошка -->
+    <div class="cat cat-right">
+        <div class="cat-ear cat-ear-left"></div>
+        <div class="cat-ear cat-ear-right"></div>
+        <div class="cat-face">
+            <div class="cat-eye cat-eye-left"></div>
+            <div class="cat-eye cat-eye-right"></div>
+            <div class="cat-nose"></div>
+            <div class="cat-mouth"></div>
+            <div class="cat-whisker cat-whisker-left-1"></div>
+            <div class="cat-whisker cat-whisker-left-2"></div>
+            <div class="cat-whisker cat-whisker-right-1"></div>
+            <div class="cat-whisker cat-whisker-right-2"></div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+        
+        <!-- Вопрос -->
+        <div class="question-section">
+            <h1 class="question">Ты меня любишь?</h1>
+            <div class="heart-decoration">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+        
+        <!-- Кнопки ответов -->
+        <div class="buttons-section">
+            <div class="btn-wrapper yes-wrapper">
+            <a href="yes-page.html" class="answer-btn yes-btn" id="yes-btn">
+                <span class="btn-text">Да</span>
+                <div class="sparkle-container">
+                    <i class="fas fa-star sparkle"></i>
+                    <i class="fas fa-star sparkle"></i>
+                    <i class="fas fa-star sparkle"></i>
+                </div>
+            </a>
+            </div>
+
+            <div class="btn-wrapper no-wrapper">
+            <button class="answer-btn no-btn" id="no-btn">
+                <span class="btn-text">Нет</span>
+            </button>
+        </div>
+        </div>
+        
+        <!-- Летающие сердечки (будут создаваться через JS) -->
+        <div id="hearts-container"></div>
+
+        <!-- Кошки для анимации (реальные изображения) -->
+
+        
+    
+   
+    
+    <script src="script.js"></script>
+</body>
+</html>
